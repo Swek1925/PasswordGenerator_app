@@ -1,0 +1,94 @@
+<html>
+
+    <head>
+    
+      <title>Password Generator App</title>
+   
+    </head>
+    
+     <style>
+
+         *{font-size: 50px;}
+      body{background-color:azure;}
+    
+      </style>
+
+
+     <script>
+     
+     function generate(){
+      
+       event.preventDefault();
+       let s6 = document.getElementById("s6");
+       let s7 = document.getElementById("s7");
+       let s8 = document.getElementById("s8");
+       let s9 = document.getElementById("s9");
+       let UpperCase = document.getElementById("uc");
+       let Digits = document.getElementById("di");
+       let msg = document.getElementById("msg");
+       
+
+       let si = 0;
+       if(s6.checked)           si = 6;
+       else if(s7.checked)      si = 7;
+       else if(s8.checked)      si = 8;
+       else                     si = 9;
+       
+       
+       let text = "abcdefghijklmnopqrstuvwxyz";
+
+       if(UpperCase.checked) text = text + text.toUpperCase();
+
+       if(Digits.checked)   text = text + "0123456789";
+     
+       let pw = "";
+      
+     for(let i=1 ; i<= si ; i++){
+         
+         let r = parseInt(Math.random() * text.length);
+         pw = pw + text[r];
+        
+      }
+  
+
+      let ans = pw; 
+      msg.innerHTML = ans;
+     
+    }
+
+     </script>
+
+
+
+
+   <body>
+
+     <center>
+
+
+      <h1 style="color:red;">Welcome to Random Password Generator App</h1>
+
+     <form onsubmit="generate()">
+       <label>Select passsword length</length>
+       <br/>
+       
+       <input type="radio" name="len" value="s6" id="s6"/> 6
+       <input type="radio" name="len" value="s7" id="s7"/> 7
+       <input type="radio" name="len" value="s8" id="s8" checked/> 8
+       <input type="radio" name="len" value="s9" id="s9"/> 9
+       <br/> <br/>
+
+       <input type="checkbox" value="uc" id="uc"/> UpperCase
+       <input type="checkbox" value="di" id="di"/> Digits
+       <br/> <br/>
+
+        <input type="submit" style="background-color:lightyellow;" value="Click to Generate Password"/>
+    </form>
+
+    <h1 id="msg"></h1>
+
+   </center>
+   </body>
+
+
+</html>
